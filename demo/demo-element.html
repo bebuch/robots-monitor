@@ -1,30 +1,31 @@
-<link rel="import" href="/bower_components/polymer/polymer-element.html">
-<link rel="import" href="/bower_components/state-display/state-display.html">
-<link rel="import" href="/bower_components/paper-toggle-button/paper-toggle-button.html">
-<link rel="import" href="/src/robots-monitor.html">
+<link rel="import" href="../../polymer/polymer-element.html">
+<link rel="import" href="../../state-display/state-display.html">
+<link rel="import" href="../../paper-toggle-button/paper-toggle-button.html">
+<link rel="import" href="../robots-monitor.html">
 
-<dom-module id="extended-element">
+
+<dom-module id="demo-element">
   <template>
     <style>
-      h2{
+      p{
         text-align:center;
       }
     </style>
-    <h2>
+    <p>
       <state-display style="display:inline-block;" state="[[connected]]"></state-display>
-      <span style="white-space:nowrap;margin:0 0.5em;">rotbots monitor</span>
       <paper-toggle-button style="display:inline-block;" checked="{{vertical}}">vertical</paper-toggle-button>
       <paper-toggle-button style="display:inline-block;" checked="{{cube}}">cube</paper-toggle-button>
-    </h2>
+    </p>
     <robots-monitor id="ws_control" port="8090" connected="{{connected}}" cube$="[[cube]]" vertical$="[[vertical]]"></robots-monitor>
   </template>
+
   <script>
     /**
      * @customElement
      * @polymer
      */
-    class ExtendedElement extends Polymer.Element {
-      static get is() { return 'extended-element'; }
+    class DemoElement extends Polymer.Element {
+      static get is() { return 'demo-element'; }
       static get properties() {
         return {
           connected: String,
@@ -34,6 +35,6 @@
       }
     }
 
-    window.customElements.define(ExtendedElement.is, ExtendedElement);
+    window.customElements.define(DemoElement.is, DemoElement);
   </script>
-<dom-module>
+</dom-module>
