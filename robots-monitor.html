@@ -19,9 +19,10 @@
       }
 
       /* 3D Cube */
-      .space3d{
+      #space3d{
         text-align: center;
         display: block;
+        transition: all 0.85s;
         overflow: visible;
       }
 
@@ -45,7 +46,7 @@
 
 
     <canvas id="cv"></canvas>
-    <div class="space3d">
+    <div id="space3d">
       <div id="box">
         <canvas class="robots" id="top"></canvas>
         <canvas class="robots" id="front"></canvas>
@@ -559,12 +560,14 @@
         if(this.vertical){
           this.$.cv.height = size / 4;
           this.$.cv.style.height = size / 4 + 'px';
+          this.$.space3d.style.height = size + 'px';
 
           if(this.cube){
             size *= 0.7;
           }
 
           if(this.cube){
+            this.$.space3d.style.height = size * 1.5 + 'px';
             this.$.top.style.top = (size * 0.30) + 'px';
             this.$.front.style.top = (size * 0.30) + 'px';
             this.$.right.style.top = (size * 0.30) + 'px';
@@ -572,6 +575,7 @@
             this.$.front.style.left = (size * 0.215) + 'px';
             this.$.right.style.left = (size * 0.215) + 'px';
           }else{
+            this.$.space3d.style.height = size * 3 + 'px';
             this.$.top.style.top = 0;
             this.$.front.style.top = size + 'px';
             this.$.right.style.top = size * 2 + 'px';
@@ -581,9 +585,9 @@
           }
         }else{
           this.$.cv.height = size / 3;
-          this.$.cv.style.height = size / 3 + 'px';
 
           if(this.cube){
+            this.$.space3d.style.height = size * 1.5 + 'px';
             this.$.top.style.top = (size / 3.5) +  'px';
             this.$.front.style.top = (size / 3.5) +  'px';
             this.$.right.style.top = (size / 3.5) +  'px';
@@ -591,6 +595,7 @@
             this.$.front.style.left = size + 'px';
             this.$.right.style.left = size + 'px';
           }else{
+            this.$.space3d.style.height = size + 'px';
             this.$.top.style.top = 0;
             this.$.front.style.top = 0;
             this.$.right.style.top = 0;
