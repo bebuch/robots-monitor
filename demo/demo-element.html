@@ -11,7 +11,7 @@
       }
     </style>
     <p>
-      <state-display style="display:inline-block;margin:0 0.5em;" size="1.5em" state="[[connected]]"></state-display>
+      <state-display style="display:inline-block;margin:0 0.5em;" size="1.5em" state="[[_calcState(connected)]]"></state-display>
       <paper-toggle-button style="display:inline-block;" checked="{{vertical}}">vertical</paper-toggle-button>
       <paper-toggle-button style="display:inline-block;" checked="{{cube}}">cube</paper-toggle-button>
     </p>
@@ -27,10 +27,14 @@
       static get is() { return 'demo-element'; }
       static get properties() {
         return {
-          connected: String,
+          connected: Boolean,
           cube: Boolean,
           vertical: Boolean
         };
+      }
+
+      _calcState(connected){
+        return connected ? 'green' : 'red';
       }
     }
 

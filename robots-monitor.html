@@ -84,8 +84,8 @@
             observer: '_connect'
           },
           connected: {
-            type: String,
-            value: 'red',
+            type: Boolean,
+            value: false,
             notify: true
           },
           maxCurrent: {
@@ -174,12 +174,12 @@
           parseInt(this.port) + '/' + this.resource)
 
         this.websocket.onopen = function(){
-            this.connected = 'green';
+            this.connected = true;
           }.bind(this);
 
         this.websocket.onclose = function(event){
             console.log('WebSocket Closed: ' + event.reason);
-            this.connected = 'red';
+            this.connected = false;
             this._connect();
           }.bind(this);
 
