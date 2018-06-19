@@ -83,6 +83,11 @@
             value: '',
             observer: '_connect'
           },
+          active: {
+            type: Boolean,
+            value: false,
+            observer: '_connect'
+          },
           connected: {
             type: Boolean,
             value: false,
@@ -170,6 +175,14 @@
       _connect(){
         if(!this.domReady) return;
 
+        if(!this.active){
+          if(this.connected){
+            this.websocket.close();
+          }
+
+          return;
+        }
+
         this.websocket = new WebSocket('ws://' + this.host + ':' +
           parseInt(this.port) + '/' + this.resource)
 
@@ -180,7 +193,9 @@
         this.websocket.onclose = function(event){
             console.log('WebSocket Closed: ' + event.reason);
             this.connected = false;
-            this._connect();
+            if(this.active){
+              this._connect();
+            }
           }.bind(this);
 
         this.websocket.onmessage = function(event){
