@@ -365,7 +365,7 @@
         ctx.stroke();
 
         let local_x = 2 * b + (c.x - min.x) / diff.x * (s - 4 * b);
-        let local_z = 2 * b + (c.z - min.z) / diff.z * (s - 4 * b);
+        let local_z = 2 * b + (diff.z - (c.z - min.z)) / diff.z * (s - 4 * b);
         let robot_x = local_x + r.x / diff.x * (s - 4 * b);
         let robot_z = local_z + r.z / diff.z * (s - 4 * b);
 
@@ -459,7 +459,7 @@
         ctx.stroke();
 
         let local_y = 2 * b + (diff.y - (c.y - min.z)) / diff.y * (s - 4 * b);
-        let local_z = 2 * b + (c.z - min.z) / diff.z * (s - 4 * b);
+        let local_z = 2 * b + (diff.z - (c.z - min.z)) / diff.z * (s - 4 * b);
         let robot_y = local_y + -r.y / diff.y * (s - 4 * b);
         let robot_z = local_z + r.z / diff.z * (s - 4 * b);
 
